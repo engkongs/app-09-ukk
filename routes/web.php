@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginRegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,11 +29,19 @@ Route::get('/admin', function () {
 Route::get('/petugas', function () {
     return view('petugas.index');
 });
+Route::get('/dashboard', function () {
+    return view('dashboard.kategori');
+});
+
+Route::resource('/kategori', KategoriController::class);
+
+
+
 // Route::get('/kategori/{id}',[KategoriController::class, 'edit'] );
 
 Route::get('/login', [LoginRegisterController::class, 'login'])->name('login');
 Route::get('/register', [LoginRegisterController::class, 'register'])->name('register');
-Route::post('/login',[LoginRegisterController::class, 'authenticate'] )->name('login.store');
+Route::post('/login', [LoginRegisterController::class, 'authenticate'])->name('login.store');
 Route::post('/register', [LoginRegisterController::class, 'store'])->name('register.store');
 
 
