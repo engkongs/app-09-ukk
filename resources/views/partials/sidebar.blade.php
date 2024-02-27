@@ -3,7 +3,8 @@
         <div class="sidebar-header position-relative">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="logo">
-                    <a href="index.html"><img src="./assets/compiled/svg/logo.svg" alt="Logo" srcset="" /></a>
+                    <a href="index.html"><img src="{{ '/assets/compiled/svg/logo.svg' }}" alt="Logo"
+                            srcset="" /></a>
                 </div>
             </div>
         </div>
@@ -24,13 +25,13 @@
                 <li class="sidebar-title">Raise Support</li>
 
                 <li class="sidebar-item">
-                    <a href="https://zuramai.github.io/mazer/docs" class="sidebar-link">
+                    <a href="/buku" class="sidebar-link">
                         <i class="bi bi-life-preserver"></i>
-                        <span>Documentation</span>
+                        <span>Buku</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="/dashboard" class="sidebar-link">
+                    <a href="/kategori" class="sidebar-link">
                         <i class="bi bi-life-preserver"></i>
                         <span>Kategori</span>
                     </a>

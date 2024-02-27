@@ -3,17 +3,16 @@
     <div class="row justify-content-center mt-3">
         <div class="">
             <div class="">
-                <h3>Halaman Edit Kategori</h3>
+                <h3>Halaman Tambah Kategori</h3>
             </div>
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('kategori.update', $kategori->id) }}" method="post">
-                        @method('PUT')
+                    <form action="{{ route('kategori.store') }}" method="post">
                         @csrf
                         <div class="mb-3">
                             <label for="Kategori" class="form-label">Nama Kategori</label>
-                            <input type="text" class="form-control" value="{{ $kategori->kategori }}" id="judul-buku"
-                                name="kategori" placeholder="Nama Kategori">
+                            <input type="text" class="form-control" id="judul-buku" name="kategori"
+                                placeholder="Nama Kategori">
                         </div>
                         <a href="/kategori">
                             <button class="btn btn-primary ">Back</button>

@@ -33,6 +33,9 @@ Route::get('/dashboard', function () {
     return view('dashboard.kategori');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard.buku');
+});
 Route::resource('/kategori', KategoriController::class);
 
 
