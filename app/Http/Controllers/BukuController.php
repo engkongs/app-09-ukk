@@ -46,26 +46,23 @@ class BukuController extends Controller
         $validateData = $request->validate([
             'judul' => 'required',
             'penulis' => 'required',
-            'penerbit' => 'required',
             'tahun_terbit' => 'required',
             'deskripsi' => 'required',
             'cover' => 'required|image|mimes:jpg,png,jpeg|max:5120',
             'stok' => 'required',
-            'id_kategori' => 'id_kategori'
-
-
+            'id_kategori' => 'required'
         ]);
         //upload gambar
-        $image = $request->file('cover');
-        $image = $request->storeAs('public/posts', $image->hashName());
-        $validateData['cover'] = $image->hashName();
-
+        $image = $request->cover;
+        $imagename = time() . '.' . $image->extension();
+        $validateData['cover']->move(public_path('image') . '/', $imagename);
+        $validateData['cover'] = $imagename;
         if ($validateData) {
             Buku::create($validateData);
 
-            return redirect('buku');
+            return redirect('dashboard');
         }
-        return redirect()->back();
+        return redirect()->route('dashboard.index');
     }
 
     /**
@@ -81,7 +78,7 @@ class BukuController extends Controller
             'title' => 'Detail Buku',
             'active' => 'buku',
             'buku' => $buku,
-            'kategori' => 'kategori',
+            'kategori' => $kategori,
             'ulas' => $ulas,
 
         ]);
@@ -92,13 +89,13 @@ class BukuController extends Controller
      */
     public function edit(string $id)
     {
-        $buku = Buku::latest()->paginate(5);
+        $buku = Buku::where('id', $id)->first();
         $kategori = Kategori::get();
 
         return view('edit.edit-buku', [
             'buku' => $buku,
             'kategori' => $kategori,
-            'buku' => 'Edit Buku',
+            'title' => 'Edit Buku',
             'active' => 'buku',
         ]);
     }
@@ -112,7 +109,6 @@ class BukuController extends Controller
             $validateData = $request->validate([
                 'judul' => 'nullable',
                 'penulis' => 'nullable',
-                'penerbit' => 'nullable',
                 'tahun_terbit' => 'nullable',
                 'deskripsi' => 'nullable',
                 'cover' => 'nullable|image|mimes:jpg,jpeg,png|max:5120',
@@ -134,7 +130,6 @@ class BukuController extends Controller
             $validateData = $request->validate([
                 'judul' => 'nullable',
                 'penulis' => 'nullable',
-                'penerbit' => 'nullable',
                 'tahun_terbit' => 'nullable',
                 'deskripsi' => 'nullable',
                 'stok' => 'nullable',
@@ -142,7 +137,7 @@ class BukuController extends Controller
             ]);
             $buku = Buku::where('id', $id)->update($validateData);
         }
-        return $this->show($id);
+        return redirect()->route('dashboard.index');
     }
 
     /**

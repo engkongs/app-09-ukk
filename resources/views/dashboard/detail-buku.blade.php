@@ -10,73 +10,84 @@
                     <div class="col">
                         <h3 class="mt-3">Selamat Datang di Detail Buku </h3>
                         <div class="card">
-                            <div class="card-body">
-                                <a href="{{ route('kategori.create') }}">
-                                    <button class="btn btn-primary ">Tambah Koleksi</button>
-                                </a>
-                                <img src="{{ asset('storage/posts/' . $buku->cover) }}" alt="" class="ms-3"
-                                    style="width:200px; height:200px">
-                                <div class=" d-flex  justify-content-center mt-5 ">
+                            <div class="card-body d-flex row ">
+                                <div class="col-6 position-relative ">
+                                    <a href="/dashboard">
+                                        <button class="btn btn-primary position-absolute top-0 left-0">Tambah
+                                            Koleksi</button>
+                                    </a>
+                                    <img src="{{ asset('image/' . $buku->cover) }}" class="w-75" alt="">
+                                </div>
+                                <div class=" d-flex mt-5 col-6">
                                     <div class="mb-3">
                                         <form action="">
-                                            <div class="mb-3">
-                                                <label for="judul-buku" class="form-label">ID</label>
-                                                <input type="text" class="form-control" readonly
-                                                    value="{{ $buku->id }}" id="judul-buku" name="judul"
-                                                    placeholder="Judul">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="judul-buku" class="form-label">Judul Buku</label>
-                                                <input type="text" class="form-control" readonly
-                                                    value="{{ Str::title($buku->judul) }}" id="judul-buku" name="judul"
-                                                    placeholder="Judul Buku">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="Kategori" class="form-label">Kategori</label>
-                                                <input type="text" class="form-control" readonly
-                                                    value="{{ Str::title($kategori->kategori) }}" id="kategori"
-                                                    name="kategori" placeholder="Nama Kategori">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="Penulis" class="form-label">Penulis</label>
-                                                <input type="text" class="form-control" value="Gilang faster" readonly
-                                                    id="penulis" name="penulis" placeholder="Penulis">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="Penerbit" class="form-label">Penerbit</label>
-                                                <input type="text" class="form-control" value="PT.Gema" readonly
-                                                    id="penerbit" name="penerbit" placeholder="Nama Kategori">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="Tahun terbit" class="form-label">Tahun Terbit</label>
-                                                <input type="number" min="1990" max="2099" step="1"
-                                                    value="2005" class="form-control" readonly
-                                                    value="{{ Str::title($buku->tahun_terbit) }}" id="tahun_terbit"
-                                                    name="tahun_terbit" placeholder="Nama Kategori">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="Stok" class="form-label">Stok</label>
-                                                <input type="number" class="form-control" readonly
-                                                    value="{{ Str::title($buku->stok) }}" value="20" id="stok"
-                                                    name="stok" placeholder="Nama Kategori">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="Deskripsi" class="form-label">Deskripsi</label>
-                                                <textarea type="text" class="form-control" readonly value="{{ Str::title($buku->deskripsi) }}" id="kategori"
-                                                    name="deskripsi" placeholder="Deskripsi">{{ $buku->deskripsi }}</textarea>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="mb-3">
+                                                        <label for="judul-buku" class="form-label">ID</label>
+                                                        <input type="text" class="form-control" readonly
+                                                            value="{{ $buku->id }}" id="judul-buku" name="judul"
+                                                            placeholder="Judul">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="judul-buku" class="form-label">Judul Buku</label>
+                                                        <input type="text" class="form-control" readonly
+                                                            value="{{ Str::title($buku->judul) }}" id="judul-buku"
+                                                            name="judul" placeholder="Judul Buku">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="Kategori" class="form-label">Kategori</label>
+                                                        <input type="text" class="form-control" readonly
+                                                            value="{{ Str::title($kategori->kategori) }}" id="kategori"
+                                                            name="kategori" placeholder="Nama Kategori">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="Penulis" class="form-label">Penulis</label>
+                                                        <input type="text" class="form-control"
+                                                            value=" {{ Str::title($buku->penulis) }}" readonly
+                                                            id="penulis" name="penulis" placeholder="Penulis">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="mb-3">
+                                                        <label for="Tahun terbit" class="form-label">Tahun Terbit</label>
+                                                        <input type="number" min="1990" max="2099" step="1"
+                                                            value="2005" class="form-control" readonly
+                                                            value="{{ Str::title($buku->tahun_terbit) }}" id="tahun_terbit"
+                                                            name="tahun_terbit" placeholder="Nama Kategori">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="Stok" class="form-label">Stok</label>
+                                                        <input type="number" class="form-control" readonly
+                                                            value="{{ Str::title($buku->stok) }}" value="20"
+                                                            id="stok" name="stok" placeholder="Nama Kategori">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="Deskripsi" class="form-label">Deskripsi</label>
+                                                        <textarea type="text" class="form-control" readonly value="{{ Str::title($buku->deskripsi) }}" id="kategori"
+                                                            name="deskripsi" placeholder="Deskripsi">{{ $buku->deskripsi }}</textarea>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body">
+                                <h3>Ulasan</h3>
+                                <a href="">
+                                    <button type="submit" class="btn btn-primary mt-3">
+                                        Kasih Ulasan
+                                    </button>
+                                </a>
                                 <div class=" d-flex  justify-content-center mt-5 ">
                                     <table class="table table-bordered border-dark-subtle  ">
                                         <thead>
                                             <tr>
                                                 <th scope="col"
                                                     class=" text-center 
-                                                ">#
+                                                ">
+                                                    #
                                                 </th>
                                                 <th scope="col" class="text-center">Buku</th>
                                                 <th scope="col" class="text-center">Ulasan</th>

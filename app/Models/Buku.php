@@ -20,7 +20,6 @@ class Buku extends Model
         'cover',
         'stok',
         'id_kategori',
-        'jumlah_pinjam'
     ];
 
     public function kategori(): BelongsTo

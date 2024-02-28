@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Koleksi;
+use App\Models\User;
+use App\Models\Buku;
 use Illuminate\Http\Request;
 
 class KoleksiController extends Controller
@@ -12,7 +14,15 @@ class KoleksiController extends Controller
      */
     public function index()
     {
-        //
+        $koleksi = Koleksi::paginate(5);
+        $user = User::get();
+        $buku = Buku::get();
+        return view('koleksi', compact('koleksi'), [
+            'title' => 'Register',
+            'active' => 'koleksi',
+            'user' => $user
+
+        ]);
     }
 
     /**
@@ -34,7 +44,7 @@ class KoleksiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Koleksi $koleksi)
+    public function show(string $id)
     {
         //
     }
@@ -42,7 +52,7 @@ class KoleksiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Koleksi $koleksi)
+    public function edit(string $id)
     {
         //
     }
@@ -50,7 +60,7 @@ class KoleksiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Koleksi $koleksi)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -58,8 +68,12 @@ class KoleksiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Koleksi $koleksi)
+    public function destroy(string $id)
     {
-        //
+        $koleksi = Koleksi::FindOrFail($id);
+
+        $koleksi->delete();
+
+        return redirect('koleksi');
     }
 }

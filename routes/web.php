@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BukuController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginRegisterController;
 use Illuminate\Support\Facades\Route;
@@ -33,9 +34,7 @@ Route::get('/dashboard', function () {
     return view('dashboard.kategori');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard.buku');
-});
+Route::resource('/dashboard', BukuController::class);
 Route::resource('/kategori', KategoriController::class);
 
 

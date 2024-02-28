@@ -54,6 +54,13 @@ class KategoriController extends Controller
      */
     public function show(string $id)
     {
+        $kategori = Kategori::where('id', $id)->first();
+
+        return view('kategori', [
+            'title' => 'Kategori',
+            'active' => 'kategori',
+            'kategori' => $kategori
+        ]);
     }
 
     /**

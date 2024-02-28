@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ulasan;
 use App\Models\Buku;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UlasanController extends Controller
@@ -28,7 +29,17 @@ class UlasanController extends Controller
      */
     public function create()
     {
-        //
+        $ulas = Ulasan::get();
+        $buku = Buku::get();
+        $user = User::get();
+        return view('form.form-ulasan', [
+            'title' => 'Buku',
+            'active' => 'buku',
+            'buku' => $buku,
+            'ulas' => $ulas,
+            'user' => $user,
+
+        ]);
     }
 
     /**
@@ -36,7 +47,21 @@ class UlasanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'id_user' => 'required',
+            'id_buku' => 'required',
+            'ulasan' => 'nullable|max:255',
+            'rating' => 'required',
+
+        ]);
+
+        if ($validateData) {
+            Ulasan::create($validateData);
+
+            return redirect('dashboard.buku');
+        }
+
+        return redirect()->back();
     }
 
     /**
@@ -52,7 +77,19 @@ class UlasanController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $ulas = Ulasan::where('id', $id)->first();
+        $buku = Buku::get();
+        $user = User::get();
+        $ulasall = Ulasan::get();
+
+        return view('edit.edit-ulasan', [
+            'title' => 'Buku',
+            'active' => 'buku',
+            'buku' => $buku,
+            'ulas' => $ulas,
+            'ulasall' => $ulasall,
+            'user' => $user,
+        ]);
     }
 
     /**
@@ -60,7 +97,16 @@ class UlasanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validateData = $request->validate([
+            'id_user' => 'required',
+            'id_buku' => 'required',
+            'ulasan' => 'nullable|max:255',
+            'rating' => 'required',
+
+        ]);
+        $ulas = Ulasan::where('id', $id)->update($validateData);
+
+        return $this->buku();
     }
 
     /**
@@ -68,6 +114,10 @@ class UlasanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $ulas = Ulasan::findOrFail($id);
+
+        $ulas->delete();
+
+        return redirect('dashboard.buku');
     }
 }

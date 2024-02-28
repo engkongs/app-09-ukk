@@ -21,7 +21,6 @@ return new class extends Migration
             $table->bigInteger('stok');
             $table->unsignedBigInteger('id_kategori');
             $table->foreign('id_kategori')->references('id')->on('kategori')->cascadeOnDelete();
-            $table->unsignedBigInteger('jumlah_pinjam');
             $table->timestamps();
         });
     }

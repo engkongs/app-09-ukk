@@ -14,9 +14,7 @@
                             <input type="text" class="form-control" id="judul-buku" name="kategori"
                                 placeholder="Nama Kategori">
                         </div>
-                        <a href="/kategori">
-                            <button class="btn btn-primary ">Back</button>
-                        </a>
+                        <a href="{{ route('kategori.index') }}" class="btn btn-primary ">Back</a>
                         <a href="">
                             <button type="reset" class="btn btn-dark ">Reset</button>
                         </a>

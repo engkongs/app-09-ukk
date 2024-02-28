@@ -25,7 +25,7 @@
                 <li class="sidebar-title">Raise Support</li>
 
                 <li class="sidebar-item">
-                    <a href="/buku" class="sidebar-link">
+                    <a href="/dashboard" class="sidebar-link">
                         <i class="bi bi-life-preserver"></i>
                         <span>Buku</span>
                     </a>
