@@ -122,9 +122,10 @@ class BukuController extends Controller
                     unlink($path);
                 }
             }
-            $image = $request->file('cover');
-            $image->storeAs('public/posts', $image->hashName());
-            $validateData['cover'] = $image->hashName();
+            $image = $request->cover;
+            $imagename = time() . '.' . $image->extension();
+            $validateData['cover']->move(public_path('image') . '/', $imagename);
+            $validateData['cover'] = $imagename;
             $buku = Buku::where('id', $id)->update($validateData);
         } else {
             $validateData = $request->validate([
@@ -132,6 +133,7 @@ class BukuController extends Controller
                 'penulis' => 'nullable',
                 'tahun_terbit' => 'nullable',
                 'deskripsi' => 'nullable',
+                'cover' => 'nullable|image|mimes:jpg,jpeg,png|max:5120',
                 'stok' => 'nullable',
                 'id_kategori' => 'nullable',
             ]);

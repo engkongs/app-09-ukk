@@ -47,13 +47,15 @@ class UserController extends Controller
             'role' => 'required',
             'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:5120',
         ]);
-        $image = $request->file('gambar');
-        $image = $request->storeAs('public/posts', $image->hashName());
-        $validateData['gambar'] = $image->hashName();
+        $image = $request->gambar;
+        $imagename = time() . '.' . $image->extension();
+        $validateData['gambar']->move(public_path('image') . '/', $imagename);
+        $validateData['gambar'] = $imagename;
         if ($validateData) {
+            // dd($validateData);
             User::create($validateData);
 
-            return redirect()->intended('index');
+            return redirect()->intended('admin');
         }
         return redirect()->back();
     }
@@ -65,7 +67,7 @@ class UserController extends Controller
     {
         $user = User::where('id', $id)->first();
 
-        return view('profile', [
+        return view('dashboard.detail-profile', [
             'title' => 'Profile',
             'active' => 'buku',
             'user' => $user,
@@ -79,9 +81,9 @@ class UserController extends Controller
     {
         $user = User::where('id', $id)->first();
 
-        return view('edit.edit-profile', [
+        return view('edit.edit-user', [
             'user' => $user,
-            'title' => 'Edit Profile',
+            'title' => 'Edit User',
             'actiive' => 'buku'
         ]);
     }
@@ -104,15 +106,18 @@ class UserController extends Controller
             $user = User::where('id', $id)->first();
 
             if ($user->gambar != null) {
-                $path = public_path('storage/posts/') . $user->gambar;
+                $path = public_path('image/') . $user->gambar;
                 if (file_exists($path)) {
                     unlink($path);
                 }
             }
-            $image = $request->file('gambar');
-            $image->storeAs('public/posts', $image->hashName());
-            $validateData['gambar'] = $image->hashName();
-            $user = User::where('id', $id)->update($validateData);
+            $image = $request->gambar;
+            $imagename = time() . '.' . $image->extension();
+            $validateData['gambar']->move(public_path('image') . '/', $imagename);
+            $validateData['gambar'] = $imagename;
+
+            $user->update($validateData);
+            
         } else {
             $validateData = $request->validate([
                 'name' => 'nullable|min:5|max:85',
@@ -124,7 +129,7 @@ class UserController extends Controller
             ]);
             $user = User::where('id', $id)->update($validateData);
         }
-        return $this->show($id);
+        return redirect()->route('admin.index');
     }
 
     /**

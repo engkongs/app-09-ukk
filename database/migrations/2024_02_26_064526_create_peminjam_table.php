@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('peminjam', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_user');
-            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->date('tanggal_pinjam');
             $table->date('tanggal_kembali');
             $table->date('tenggat');

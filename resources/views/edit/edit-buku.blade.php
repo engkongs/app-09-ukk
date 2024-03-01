@@ -40,6 +40,11 @@
                                 name="tahun_terbit" placeholder="Judul Buku">
                         </div>
                         <div class="mb-3">
+                            <label for="cover" class="form-label">Gambar</label>
+                            <input type="file" class="form-control" name="cover" id="cover"
+                                value="{{ $buku->cover }}">
+                        </div>
+                        <div class="mb-3">
                             <label for="Judul" class="form-label">Deskripsi</label>
                             <textarea type="text" class="form-control" id="deskripsi" name="deskripsi" placeholder="Deskripsi">{{ $buku->deskripsi }}</textarea>
                         </div>

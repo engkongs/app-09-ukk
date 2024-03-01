@@ -27,7 +27,7 @@ class User extends Authenticatable
         'nomor_telepon',
         'alamat',
         'gambar',
-        'role_id',
+        'role',
     ];
 
     /**

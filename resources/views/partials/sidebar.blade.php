@@ -37,16 +37,16 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="https://github.com/zuramai/mazer/blob/main/CONTRIBUTING.md" class="sidebar-link">
+                    <a href="/peminjaman" class="sidebar-link">
                         <i class="bi bi-puzzle"></i>
-                        <span>Contribute</span>
+                        <span>Peminjaman</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="https://github.com/zuramai/mazer#donation" class="sidebar-link">
+                    <a href="/admin" class="sidebar-link">
                         <i class="bi bi-cash"></i>
-                        <span>Donate</span>
+                        <span>Tambah User</span>
                     </a>
                 </li>
             </ul>
