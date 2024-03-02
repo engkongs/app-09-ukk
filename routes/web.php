@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\KoleksiController;
 use App\Http\Controllers\LoginRegisterController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PeminjamController;
+use App\Http\Controllers\UlasanController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +43,8 @@ Route::resource('/dashboard', BukuController::class);
 Route::resource('/kategori', KategoriController::class);
 Route::resource('/peminjaman', PeminjamanController::class);
 Route::resource('/admin', UserController::class);
+Route::resource('/ulasan', UlasanController::class);
+Route::resource('/koleksi', KoleksiController::class);
 
 
 // Route::get('/kategori/{id}',[KategoriController::class, 'edit'] );

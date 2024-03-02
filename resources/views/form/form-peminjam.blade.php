@@ -39,7 +39,6 @@
                         <div class="mb-3">
                             <label for="Judul" class="form-label">Status</label>
                             <select class="form-control" name="status" id="status" aria-label="Default select example">
-                                <option value="dipeasn">Dipesan</option>
                                 <option value="dipinjam">Dipinjam</option>
                                 <option value="dikembalikan">Dikembalikan</option>
                             </select>

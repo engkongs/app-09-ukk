@@ -18,10 +18,6 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
-
-
-
-
                 <li class="sidebar-title">Raise Support</li>
 
                 <li class="sidebar-item">
@@ -34,6 +30,12 @@
                     <a href="/kategori" class="sidebar-link">
                         <i class="bi bi-life-preserver"></i>
                         <span>Kategori</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/koleksi" class="sidebar-link">
+                        <i class="bi bi-life-preserver"></i>
+                        <span>Koleksi</span>
                     </a>
                 </li>
                 <li class="sidebar-item">

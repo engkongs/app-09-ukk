@@ -42,8 +42,6 @@
                         <div class="mb-3">
                             <label for="Judul" class="form-label">Status</label>
                             <select class="form-control" name="status" id="status" aria-label="Default select example">
-                                <option value="dipeasn"{{ $peminjaman->status == 'dipeasn' ? 'selected' : '' }}>Dipesan
-                                </option>
                                 <option value="dipinjam"{{ $peminjaman->status == 'dipinjam' ? 'selected' : '' }}>Dipinjam
                                 </option>
                                 <option value="dikembalikan"{{ $peminjaman->status == 'dikembalikan' ? 'selected' : '' }}>

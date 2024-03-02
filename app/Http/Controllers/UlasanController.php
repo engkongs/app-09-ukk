@@ -58,7 +58,7 @@ class UlasanController extends Controller
         if ($validateData) {
             Ulasan::create($validateData);
 
-            return redirect('dashboard.buku');
+            return redirect()->route('dashboard.index');
         }
 
         return redirect()->back();
@@ -101,12 +101,12 @@ class UlasanController extends Controller
             'id_user' => 'required',
             'id_buku' => 'required',
             'ulasan' => 'nullable|max:255',
-            'rating' => 'required',
+            'rating' => 'nullable',
 
         ]);
         $ulas = Ulasan::where('id', $id)->update($validateData);
 
-        return $this->buku();
+        return redirect()->route('dashboard.index');
     }
 
     /**
@@ -118,6 +118,6 @@ class UlasanController extends Controller
 
         $ulas->delete();
 
-        return redirect('dashboard.buku');
+        return redirect()->route('dashboard.index');
     }
 }

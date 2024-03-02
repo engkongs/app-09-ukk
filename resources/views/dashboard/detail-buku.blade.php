@@ -12,10 +12,14 @@
                         <div class="card">
                             <div class="card-body d-flex row ">
                                 <div class="col-6 position-relative ">
-                                    <a href="/dashboard">
-                                        <button class="btn btn-primary position-absolute top-0 left-0">Tambah
+                                    <form action="{{ route('koleksi.store') }}" method="post"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="hidden" name="id_buku" value="{{ $buku->id }}">
+                                        <input type="hidden" name="id_user" value="{{ Auth::user()->id }}">
+                                        <button type="submit" class="btn btn-primary position-absolute top-0 left-0">Tambah
                                             Koleksi</button>
-                                    </a>
+                                    </form>
                                     <img src="{{ asset('image/' . $buku->cover) }}" class="w-75" alt="">
                                 </div>
                                 <div class=" d-flex mt-5 col-6">
@@ -73,9 +77,11 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="card">
                             <div class="card-body">
                                 <h3>Ulasan</h3>
-                                <a href="">
+                                <a href="{{ route('ulasan.create') }}">
                                     <button type="submit" class="btn btn-primary mt-3">
                                         Kasih Ulasan
                                     </button>
@@ -85,7 +91,7 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col"
-                                                    class=" text-center 
+                                                    class=" text-center
                                                 ">
                                                     #
                                                 </th>
@@ -101,10 +107,10 @@
                                             @foreach ($ulas as $ulas)
                                                 <tr>
                                                     <td class=" text-center ">{{ $loop->iteration }}</td>
-                                                    <td class="text-center">{{ Str::title($ulas->$buku->judul) }}</td>
+                                                    <td class="text-center">{{ Str::title($buku->judul) }}</td>
                                                     <td class="text-center">{{ $ulas->ulasan }}</td>
                                                     <td class="text-center">{{ $ulas->rating }}</td>
-                                                    <td class="text-center">{{ Str::title($ulas->user->username) }}</td>
+                                                    <td class="text-center">{{ Str::title($ulas->user->name) }}</td>
                                                     <td>
                                                         <div class="dropdown d-flex  justify-content-center ">
                                                             <button class="btn btn-secondary dropdown-toggle"
@@ -114,9 +120,9 @@
                                                             </button>
                                                             <ul class="dropdown-menu">
                                                                 <li><a class="dropdown-item"
-                                                                        href={{ route('ulas.edit', $kategori->id) }}>Edit</a>
+                                                                        href="{{ route('ulasan.edit', $ulas->id) }}">Edit</a>
                                                                 </li>
-                                                                <form action="{{ route('ulas.destroy', $kategori->id) }}"
+                                                                <form action="{{ route('ulasan.destroy', $ulas->id) }}"
                                                                     method="POST">
                                                                     @csrf
                                                                     @method('DELETE')
