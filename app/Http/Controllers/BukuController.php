@@ -72,7 +72,7 @@ class BukuController extends Controller
     {
         $buku = Buku::where('id', $id)->first();
         $kategori = Kategori::where('id', $buku->id_kategori)->first();
-        $ulas = Ulasan::latest()->paginate(5);
+        $ulas = Ulasan::where('id_buku', $buku->id)->latest()->paginate(5);
 
         return view('dashboard.detail-buku', [
             'title' => 'Detail Buku',

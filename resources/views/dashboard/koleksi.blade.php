@@ -44,13 +44,11 @@
                                                             </button>
                                                             <ul class="dropdown-menu">
                                                                 <li><a class="dropdown-item"
-                                                                        href={{ route('dashboard.show', $koleksi->id) }}>Detail
-                                                                        Koleksi</a>
+                                                                        href={{ route('dashboard.show', $koleksi->buku->id) }}>Detail
+                                                                    </a>
                                                                 </li>
-                                                                <li><a class="dropdown-item"
-                                                                        href={{ route('koleksi.edit', $koleksi->id) }}>Edit</a>
-                                                                </li>
-                                                                <form action="{{ route('koleksi.update', $koleksi->id) }}"
+                                                                <form
+                                                                    action="{{ route('koleksi.destroy', $koleksi->buku->id) }}"
                                                                     method="POST">
                                                                     @csrf
                                                                     @method('DELETE')

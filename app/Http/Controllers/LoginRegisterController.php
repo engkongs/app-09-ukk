@@ -66,11 +66,19 @@ class LoginRegisterController extends Controller
             } else if (auth()->user()->role === 'peminjam') {
                 return redirect()->intended('/peminjam');
             }
-            // return redirect('dashboard')->withSuccess('Succes Login');        
+            // return redirect('dashboard')->withSuccess('Succes Login');
         }
 
         return back()->withErrors([
             'email' => 'Tidak Sesuai dengan email',
         ])->onlyInput('email');
+    }
+
+    public function logout(Request $request) {
+       Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('login')
+            ->withSuccess('You have logged out successfully!');;
     }
 }

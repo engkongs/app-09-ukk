@@ -13,7 +13,7 @@
                 <li class="sidebar-title">Menu</li>
 
                 <li class="sidebar-item active">
-                    <a href="index.html" class="sidebar-link">
+                    <a href="/dashboard" class="sidebar-link">
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
                     </a>
@@ -22,34 +22,43 @@
 
                 <li class="sidebar-item">
                     <a href="/dashboard" class="sidebar-link">
-                        <i class="bi bi-life-preserver"></i>
+                        <i class="bi bi-book-half"></i>
                         <span>Buku</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
                     <a href="/kategori" class="sidebar-link">
-                        <i class="bi bi-life-preserver"></i>
+                        <i class="bi bi-bookmarks-fill"></i>
                         <span>Kategori</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
                     <a href="/koleksi" class="sidebar-link">
-                        <i class="bi bi-life-preserver"></i>
+                        <i class="bi bi-collection"></i>
                         <span>Koleksi</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
                     <a href="/peminjaman" class="sidebar-link">
-                        <i class="bi bi-puzzle"></i>
+                        <i class="bi bi-cart"></i>
                         <span>Peminjaman</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
                     <a href="/admin" class="sidebar-link">
-                        <i class="bi bi-cash"></i>
+                        <i class="bi bi-person-add"></i>
                         <span>Tambah User</span>
                     </a>
+                </li>
+                <li class="sidebar-item">
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button role="button" type="submit" class="sidebar-link">
+                            <i class="bi bi-box-arrow-left"></i>
+                            <span>Logout</span>
+                        </button>
+                    </form>
                 </li>
             </ul>
         </div>

@@ -53,7 +53,7 @@ Route::get('/login', [LoginRegisterController::class, 'login'])->name('login');
 Route::get('/register', [LoginRegisterController::class, 'register'])->name('register');
 Route::post('/login', [LoginRegisterController::class, 'authenticate'])->name('login.store');
 Route::post('/register', [LoginRegisterController::class, 'store'])->name('register.store');
-
+Route::post('/logout', [LoginRegisterController::class,'logout'])->name('logout');
 
 Route::get('/kumpulan', function () {
     return view('layouts.kumpulan');

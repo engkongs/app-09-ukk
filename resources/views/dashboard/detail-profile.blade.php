@@ -8,7 +8,7 @@
             <div class="container">
                 <div class="">
                     <div class="col">
-                        <h3 class="mt-3">Selamat Datang di Edit Profile </h3>
+                        <h3 class="mt-3">Selamat Datang di Detail Profile </h3>
                         <div class="card">
                             <div class="card-body d-flex row ">
                                 <div class="col-6 position-relative d-flex align-items-center justify-content-center">

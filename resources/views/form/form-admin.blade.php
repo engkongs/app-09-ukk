@@ -3,7 +3,7 @@
     <div class="row justify-content-center mt-3">
         <div class="">
             <div class="">
-                <h3>Halaman Tambah Admin</h3>
+                <h3>Halaman Tambah User</h3>
             </div>
             @if ($errors->any())
                 <p>{{ $errors }}</p>
