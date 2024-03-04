@@ -14,7 +14,7 @@ class KoleksiController extends Controller
      */
     public function index()
     {
-        $koleksi = Koleksi::paginate(5);
+        $koleksi = Koleksi::where('id_user', auth()->user()->id)->paginate(5);
         $user = User::get();
         $buku = Buku::get();
         return view('dashboard.koleksi', compact('koleksi'), [

@@ -44,7 +44,7 @@ class BukuController extends Controller
      */
     public function store(Request $request)
     {
-        $this->authorize('admin-petugas');
+        // $this->authorize('admin-petugas');
         $validateData = $request->validate([
             'judul' => 'required',
             'penulis' => 'required',

@@ -52,6 +52,11 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="mb-3">
+                            <label for="jml_pinjam" class="form-label">Jumlah Pinjam</label>
+                            <input type="number" class="form-control" id="jumlah_pinjam" placeholder=""
+                                name="jumlah_pinjam">
+                        </div>
                         <a href="{{ route('peminjaman.index') }}" class="btn btn-primary ">Back</a>
 
 
