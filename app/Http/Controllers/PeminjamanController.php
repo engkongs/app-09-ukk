@@ -15,12 +15,14 @@ class PeminjamanController extends Controller
     public function index()
     {
         $peminjam = Peminjaman::get();
+        $peminjaman_user = Peminjaman::where('id_user', auth()->user()->id)->get();
         $user = User::get();
         return view('dashboard.peminjaman', [
             'title' => 'Peminjam',
             'active' => 'peminjam',
             'peminjam' => $peminjam,
-            'user' => $user
+            'user' => $user,
+            'peminjaman_user' => $peminjaman_user,
         ]);
     }
 
@@ -29,6 +31,7 @@ class PeminjamanController extends Controller
      */
     public function create()
     {
+        // $this->authorize('admin-petugas');
         $buku = Buku::get();
         $user = User::get();
 
@@ -45,6 +48,7 @@ class PeminjamanController extends Controller
      */
     public function store(Request $request)
     {
+        // $this->authorize('admin-petugas');
         $validateData = $request->validate([
             'tanggal_pinjam' => 'required',
             'tanggal_kembali' => 'required',
@@ -54,7 +58,7 @@ class PeminjamanController extends Controller
             'id_buku' => 'required',
         ]);
 
-        if($validateData){
+        if ($validateData) {
             Peminjaman::create($validateData);
 
             return redirect('peminjaman');
@@ -76,6 +80,7 @@ class PeminjamanController extends Controller
      */
     public function edit(string $id)
     {
+        // $this->authorize('admin-petugas');
         $peminjaman = Peminjaman::where('id', $id)->first();
         $listbuku = Buku::get();
         $user = User::get();
@@ -94,6 +99,7 @@ class PeminjamanController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        // $this->authorize('admin-petugas');
         $validateData = $request->validate([
             'id_buku' => 'nullable',
             'tanggal_pinjam' => 'nullable',
@@ -103,7 +109,7 @@ class PeminjamanController extends Controller
             'id_user' => 'nullable',
         ]);
         $peminjaman = Peminjaman::where('id', $id)->update($validateData);
-        return $this->index();    
+        return $this->index();
     }
 
     /**
@@ -111,11 +117,11 @@ class PeminjamanController extends Controller
      */
     public function destroy(string $id)
     {
+        $this->authorize('admin-petugas');
         $peminjam = Peminjaman::findOrFail($id);
 
         $peminjam->delete();
 
         return redirect('peminjaman');
-
     }
 }

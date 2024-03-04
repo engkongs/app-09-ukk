@@ -61,10 +61,10 @@ class LoginRegisterController extends Controller
             $request->session()->regenerate();
             if (auth()->user()->role === 'admin') {
                 return redirect()->intended('/admin');
-            } else if  (auth()->user()->role === 'petugas') {
+            } else if (auth()->user()->role === 'petugas') {
                 return redirect()->intended('/petugas');
             } else if (auth()->user()->role === 'peminjam') {
-                return redirect()->intended('/peminjam');
+                return redirect()->intended('/peminjaman');
             }
             // return redirect('dashboard')->withSuccess('Succes Login');
         }
@@ -74,8 +74,9 @@ class LoginRegisterController extends Controller
         ])->onlyInput('email');
     }
 
-    public function logout(Request $request) {
-       Auth::logout();
+    public function logout(Request $request)
+    {
+        Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('login')

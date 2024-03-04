@@ -29,6 +29,7 @@ class BukuController extends Controller
      */
     public function create()
     {
+        // $this->authorize('admin-petugas');
         $kategori = Kategori::get();
 
         return view('form.form-buku', [
@@ -43,6 +44,7 @@ class BukuController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('admin-petugas');
         $validateData = $request->validate([
             'judul' => 'required',
             'penulis' => 'required',
@@ -89,6 +91,7 @@ class BukuController extends Controller
      */
     public function edit(string $id)
     {
+        // $this->authorize('admin-petugas');
         $buku = Buku::where('id', $id)->first();
         $kategori = Kategori::get();
 
@@ -105,6 +108,7 @@ class BukuController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        // $this->authorize('admin-petugas');
         if ($request->has('cover')) {
             $validateData = $request->validate([
                 'judul' => 'nullable',
@@ -147,6 +151,7 @@ class BukuController extends Controller
      */
     public function destroy(string $id)
     {
+        // $this->authorize('admin-petugas');
         $buku = Buku::where('id', $id)->first();
         if ($buku->cover != null) {
             $path = public_path('storage/posts/') . $buku->cover;

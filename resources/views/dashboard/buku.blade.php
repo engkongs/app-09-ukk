@@ -11,15 +11,17 @@
                         <h3 class="mt-3">Selamat Datang di Halaman Buku </h3>
                         <div class="card">
                             <div class="card-body">
-                                <a href="{{ route('dashboard.create') }}">
-                                    <button class="btn btn-primary ">Tambah Buku</button>
-                                </a>
+                                @if (auth()->user()->role == 'admin' || auth()->user()->role == 'petugas')
+                                    <a href="{{ route('dashboard.create') }}">
+                                        <button class="btn btn-primary ">Tambah Buku</button>
+                                    </a>
+                                @endif
                                 <div class=" d-flex  justify-content-center mt-5 ">
                                     <table class="table table-bordered border-dark-subtle  ">
                                         <thead>
                                             <tr>
                                                 <th scope="col"
-                                                    class=" text-center 
+                                                    class=" text-center
                                                 ">#
                                                 </th>
                                                 <th scope="col" class="text-center">Judul</th>
@@ -59,16 +61,21 @@
                                                                         href={{ route('dashboard.show', $buku->id) }}>Detail
                                                                         Buku</a>
                                                                 </li>
-                                                                <li><a class="dropdown-item"
-                                                                        href={{ route('dashboard.edit', $buku->id) }}>Edit</a>
-                                                                </li>
-                                                                <form action="{{ route('dashboard.destroy', $buku->id) }}"
-                                                                    method="POST">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <li><button type="submit" class="dropdown-item"
-                                                                            href="#">Delete</button></li>
-                                                                </form>
+                                                                @if (auth()->user()->role == 'admin' || auth()->user()->role == 'petugas')
+                                                                    <li><a class="dropdown-item"
+                                                                            href={{ route('dashboard.edit', $buku->id) }}>Edit</a>
+                                                                    </li>
+                                                                @endif
+                                                                @if (auth()->user()->role == 'admin' || auth()->user()->role == 'petugas')
+                                                                    <form
+                                                                        action="{{ route('dashboard.destroy', $buku->id) }}"
+                                                                        method="POST">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <li><button type="submit" class="dropdown-item"
+                                                                                href="#">Delete</button></li>
+                                                                    </form>
+                                                                @endif
                                                             </ul>
                                                         </div>
                                                     </td>

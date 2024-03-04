@@ -119,16 +119,19 @@
                                                                 Options
                                                             </button>
                                                             <ul class="dropdown-menu">
-                                                                <li><a class="dropdown-item"
-                                                                        href="{{ route('ulasan.edit', $ulas->id) }}">Edit</a>
-                                                                </li>
-                                                                <form action="{{ route('ulasan.destroy', $ulas->id) }}"
-                                                                    method="POST">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <li><button type="submit" class="dropdown-item"
-                                                                            href="#">Delete</button></li>
-                                                                </form>
+                                                                @if ($ulas->id_user == Auth::user()->id)
+                                                                    <li><a class="dropdown-item"
+                                                                            href="{{ route('ulasan.edit', $ulas->id) }}">Edit</a>
+                                                                    </li>
+                                                                    <form
+                                                                        action="{{ route('ulasan.destroy', $ulas->id) }}"
+                                                                        method="POST">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <li><button type="submit" class="dropdown-item"
+                                                                                href="#">Delete</button></li>
+                                                                    </form>
+                                                                @endif
                                                             </ul>
                                                         </div>
                                                     </td>

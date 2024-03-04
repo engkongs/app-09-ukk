@@ -27,7 +27,7 @@
                     </ul>
                 </div>
                 <div class="d-flex">
-                    <a href="{{ url('login') }}" class="btn btn-dark  rounded-pill">Login -></a>
+                    <a href="{{ route('login') }}" class="btn btn-dark  rounded-pill">Login -></a>
                 </div>
             </div>
         </nav>

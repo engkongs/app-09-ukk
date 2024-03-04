@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 class PeminjamController extends Controller
 {
-    public function index() {
-        return view('peminjaman.index');
+    public function index()
+    {
+        return redirect()->intended('peminjaman');
     }
 }

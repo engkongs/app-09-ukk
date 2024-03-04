@@ -44,13 +44,14 @@
                         <span>Peminjaman</span>
                     </a>
                 </li>
-
-                <li class="sidebar-item">
-                    <a href="/admin" class="sidebar-link">
-                        <i class="bi bi-person-add"></i>
-                        <span>Tambah User</span>
-                    </a>
-                </li>
+                @if (auth()->user()->role == 'admin')
+                    <li class="sidebar-item">
+                        <a href="/admin" class="sidebar-link">
+                            <i class="bi bi-person-add"></i>
+                            <span>Tambah User</span>
+                        </a>
+                    </li>
+                @endif
                 <li class="sidebar-item">
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf

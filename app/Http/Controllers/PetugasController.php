@@ -2,27 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Koleksi;
-use App\Models\User;
-use App\Models\Buku;
 use Illuminate\Http\Request;
 
-class KoleksiController extends Controller
+class PetugasController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $koleksi = Koleksi::paginate(5);
-        $user = User::get();
-        $buku = Buku::get();
-        return view('dashboard.koleksi', compact('koleksi'), [
-            'title' => 'Register',
-            'active' => 'koleksi',
-            'user' => $user
-
-        ]);
+        return redirect()->intended('dashboard');
     }
 
     /**
@@ -38,15 +27,7 @@ class KoleksiController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->authorize('admin-petugas');
-        $validateData = $request->validate([
-            'id_buku' => 'required',
-            'id_user' => 'required',
-        ]);
-
-        $koleksi = Koleksi::create($validateData);
-
-        return redirect()->route('koleksi.index');
+        //
     }
 
     /**
@@ -78,11 +59,6 @@ class KoleksiController extends Controller
      */
     public function destroy(string $id)
     {
-        // $this->authorize('admin-petugas');
-        $koleksi = Koleksi::FindOrFail($id);
-
-        $koleksi->delete();
-
-        return redirect('koleksi');
+        //
     }
 }

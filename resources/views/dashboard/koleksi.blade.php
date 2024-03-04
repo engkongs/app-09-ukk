@@ -47,14 +47,16 @@
                                                                         href={{ route('dashboard.show', $koleksi->buku->id) }}>Detail
                                                                     </a>
                                                                 </li>
-                                                                <form
-                                                                    action="{{ route('koleksi.destroy', $koleksi->buku->id) }}"
-                                                                    method="POST">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <li><button type="submit" class="dropdown-item"
-                                                                            href="#">Delete</button></li>
-                                                                </form>
+                                                                @if (auth()->user()->role == 'admin' || auth()->user()->role == 'petugas')
+                                                                    <form
+                                                                        action="{{ route('koleksi.destroy', $koleksi->buku->id) }}"
+                                                                        method="POST">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <li><button type="submit" class="dropdown-item"
+                                                                                href="#">Delete</button></li>
+                                                                    </form>
+                                                                @endif
                                                             </ul>
                                                         </div>
                                                     </td>
