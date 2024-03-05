@@ -17,6 +17,11 @@
                                             <button class="btn btn-primary ">Tambah Data</button>
                                         </a>
                                     @endif
+                                    @if (auth()->user()->role == 'admin' || auth()->user()->role == 'petugas')
+                                        <a href="{{ route('cetakpeminjaman') }}">
+                                            <button class="btn btn-primary ">Export Data Peminjaman</button>
+                                        </a>
+                                    @endif
                                     <div class=" d-flex  justify-content-center mt-5 ">
                                         <table class="table table-bordered border-dark-subtle  ">
                                             <thead>

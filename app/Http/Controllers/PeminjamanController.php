@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PeminjamanExport;
 use App\Models\Buku;
-use App\Models\Peminjaman;
 use App\Models\User;
+use App\Models\Peminjaman;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PeminjamanController extends Controller
 {
@@ -125,5 +127,10 @@ class PeminjamanController extends Controller
         $peminjam->delete();
 
         return redirect('peminjaman');
+    }
+
+    public function export_peminjaman()
+    {
+        return Excel::download(new PeminjamanExport, 'Peminjaman.xlsx');
     }
 }

@@ -61,3 +61,4 @@ Route::post('/logout', [LoginRegisterController::class, 'logout'])->name('logout
 Route::get('/kumpulan', function () {
     return view('layouts.kumpulan');
 });
+Route::get('/cetak-peminjaman', [PeminjamanController::class, 'export_peminjaman'])->name('cetakpeminjaman');
