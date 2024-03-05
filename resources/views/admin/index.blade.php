@@ -1,7 +1,7 @@
 @extends('layouts.kumpulan')
 @section('contents')
     <div class="page-heading">
-        <h3>Tambah User</h3>
+        <h3>Hallo, {{ Str::title(Auth::user()->name) }}</h3>
     </div>
     <div class="page-content">
         <section class="row">

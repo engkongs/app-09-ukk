@@ -76,10 +76,10 @@ class KoleksiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Koleksi $koleksi)
     {
         // $this->authorize('admin-petugas');
-        $koleksi = Koleksi::FindOrFail($id);
+        // $koleksi = Koleksi::FindOrFail($id);
 
         $koleksi->delete();
 

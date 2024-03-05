@@ -91,7 +91,7 @@ class BukuController extends Controller
      */
     public function edit(string $id)
     {
-        // $this->authorize('admin-petugas');
+        $this->authorize('admin-petugas');
         $buku = Buku::where('id', $id)->first();
         $kategori = Kategori::get();
 

@@ -17,8 +17,8 @@ return new class extends Migration
         AFTER INSERT
         ON peminjam FOR EACH ROW
         BEGIN
-            UPDATE buku SET stok = buku.stok - NEW.jumlah_pinjam
-            WHERE buku.id = NEW.id;
+            UPDATE buku SET stok = stok - NEW.jumlah_pinjam
+            WHERE id = NEW.id;
         END;
     ');
         DB::unprepared('
@@ -26,10 +26,10 @@ return new class extends Migration
         AFTER UPDATE
         ON peminjam FOR EACH ROW
         BEGIN
-            UPDATE buku SET stok = buku.stok + OLD.jumlah_pinjam
-            WHERE buku.id = OLD.id;
-            UPDATE buku SET stok = buku.stok - NEW.jumlah_pinjam
-            WHERE buku.id = NEW.id;
+            UPDATE buku SET stok = stok + OLD.jumlah_pinjam
+            WHERE id = OLD.id;
+            UPDATE buku SET stok = stok - NEW.jumlah_pinjam
+            WHERE id = NEW.id;
         END;
     ');
         DB::unprepared('
@@ -37,7 +37,7 @@ return new class extends Migration
         AFTER DELETE
         ON peminjam FOR EACH ROW
         BEGIN
-            UPDATE buku SET stok = buku.stok + OLD.jumlah_pinjam
+            UPDATE buku SET stok = stok + OLD.jumlah_pinjam
             WHERE id = OLD.id;
         END;
     ');

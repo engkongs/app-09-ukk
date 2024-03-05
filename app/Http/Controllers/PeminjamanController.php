@@ -119,7 +119,7 @@ class PeminjamanController extends Controller
      */
     public function destroy(string $id)
     {
-        $this->authorize('admin-petugas');
+        // $this->authorize('admin-petugas');
         $peminjam = Peminjaman::findOrFail($id);
 
         $peminjam->delete();

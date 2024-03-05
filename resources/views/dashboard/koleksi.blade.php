@@ -1,7 +1,7 @@
 @extends('layouts.kumpulan')
 @section('contents')
     <div class="page-heading">
-        <h3></h3>
+        <h3>Hallo, {{ Str::title(Auth::user()->name) }}</h3>
     </div>
     <div class="page-content">
         <section class="row">
@@ -37,6 +37,14 @@
                                                     <td class="text-center">{{ Str::title($koleksi->buku->judul) }}</td>
                                                     <td class="text-center">{{ Str::title($koleksi->buku->penulis) }}</td>
                                                     <td>
+                                                        {{-- <a href="{{ route('dashboard.show', $koleksi->buku->id) }}"
+                                                            class="btn btn-secondary">Detail</a>
+                                                        <form action="{{ route('koleksi.destroy', $koleksi->buku->id) }}"
+                                                            method="POST" class="d-inline">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger">Hapus</button>
+                                                        </form> --}}
                                                         <div class="dropdown d-flex  justify-content-center ">
                                                             <button class="btn btn-secondary dropdown-toggle" type="button"
                                                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -47,16 +55,14 @@
                                                                         href={{ route('dashboard.show', $koleksi->buku->id) }}>Detail
                                                                     </a>
                                                                 </li>
-                                                                @if (auth()->user()->role == 'admin' || auth()->user()->role == 'petugas')
-                                                                    <form
-                                                                        action="{{ route('koleksi.destroy', $koleksi->buku->id) }}"
-                                                                        method="POST">
-                                                                        @csrf
-                                                                        @method('DELETE')
-                                                                        <li><button type="submit" class="dropdown-item"
-                                                                                href="#">Delete</button></li>
-                                                                    </form>
-                                                                @endif
+                                                                <form
+                                                                    action="{{ route('koleksi.destroy', $koleksi->id) }}"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <li><button type="submit"
+                                                                            class="dropdown-item">Delete</button></li>
+                                                                </form>
                                                             </ul>
                                                         </div>
                                                     </td>
