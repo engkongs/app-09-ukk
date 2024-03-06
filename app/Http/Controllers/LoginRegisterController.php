@@ -16,33 +16,48 @@ class LoginRegisterController extends Controller
     }
     public function store(Request $request)
     {
-        $request->validate([
+        $validateData = $request->validate([
             'name' => 'required|string|max:250',
             'email' => 'required|email|max:250|unique:users',
             // 'username'=>'required|string|max:50|',
             'password' => 'required|min:8|confirmed',
             'nomor_telepon' => 'required|string|max:13',
             'alamat' => 'required|string|max:250',
-
-
-        ]);
-
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            // 'username'=>$request->username,
-            'nomor_telepon' => $request->nomor_telepon,
-            'alamat' => $request->alamat,
+            'gambar' => 'nullable|image|mimes:jpeg,jpg,png|max:5120'
 
 
         ]);
 
 
-        $credentials  = $request->only('email', 'password');
-        Auth::attempt($credentials);
-        $request->session()->regenerate();
-        return redirect()->route('login')->withSuccess('Succes Register');
+        $image = $request->gambar;
+        $imagename = time() . '.' . $image->extension();
+        $validateData['gambar']->move(public_path('image') . '/', $imagename);
+        $validateData['gambar'] = $imagename;
+        if ($validateData) {
+            $validateData['role'] = 'peminjam';
+
+            User::create($validateData);
+
+            return redirect()->intended('login');
+        }
+
+
+        // User::create([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'password' => Hash::make($request->password),
+        //     // 'username'=>$request->username,
+        //     'nomor_telepon' => $request->nomor_telepon,
+        //     'alamat' => $request->alamat,
+        //     'gambar' => 'nullable|image|mimes:jpeg,jpg,png|max:5120'
+        // ]);
+
+
+
+        // $credentials  = $request->only('email', 'password');
+        // Auth::attempt($credentials);
+        // $request->session()->regenerate();
+        // return redirect()->route('login')->withSuccess('Succes Register');
     }
 
     public function login()

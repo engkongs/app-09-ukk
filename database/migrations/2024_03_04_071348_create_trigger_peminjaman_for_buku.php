@@ -41,6 +41,17 @@ return new class extends Migration
             WHERE id = OLD.id_buku;
         END;
     ');
+        DB::unprepared('
+        CREATE TRIGGER TR_peminjaman_dikembalikan_AD
+        AFTER UPDATE
+        ON peminjam FOR EACH ROW
+        BEGIN
+            IF(NEW.status = "dikembalikan") THEN
+                UPDATE buku SET stok = stok + OLD.jumlah_pinjam
+                WHERE id = OLD.id_buku;
+            END IF;
+        END;
+    ');
     }
 
     /**

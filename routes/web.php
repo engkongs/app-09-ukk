@@ -30,21 +30,29 @@ Route::get('/', function () {
 //     return view('peminjam.index');
 // });
 
-Route::get('/admin', function () {
-    return view('admin.index');
+Route::middleware('auth')->group(function () {
+    Route::get('/admin', function () {
+        return view('admin.index');
+    });
+
+    Route::get('/dashboard', function () {
+        return view('dashboard.kategori');
+    });
+
+    Route::resource('/dashboard', BukuController::class);
+    Route::resource('/kategori', KategoriController::class);
+    Route::resource('/peminjaman', PeminjamanController::class);
+    Route::resource('/ulasan', UlasanController::class);
+    Route::resource('/koleksi', KoleksiController::class);
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard.kategori');
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::resource('/admin', UserController::class);
 });
 
-Route::resource('/dashboard', BukuController::class);
-Route::resource('/kategori', KategoriController::class);
-Route::resource('/peminjaman', PeminjamanController::class);
-Route::resource('/admin', UserController::class);
-Route::resource('/ulasan', UlasanController::class);
-Route::resource('/koleksi', KoleksiController::class);
-Route::resource('/petugas', PetugasController::class);
+Route::middleware(['auth', 'pegawai'])->group(function () {
+    Route::resource('/petugas', PetugasController::class);
+});
 
 
 // Route::get('/kategori/{id}',[KategoriController::class, 'edit'] );

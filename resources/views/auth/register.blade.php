@@ -12,7 +12,7 @@
                             <h3 class=" fw-semibold ">Langsung Saja Daftar</h3>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('register.store') }}" method="POST">
+                            <form action="{{ route('register.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
                                     <input type="text"
@@ -67,11 +67,13 @@
                                         @endif
                                     </div>
                                     <div class="mb-3">
+                                        <label for="image" class="form-label">Foto Profile</label>
+                                        <input type="file" class="form-control" name="gambar" id="image">
+                                    </div>
+                                    <div class="mb-3">
                                         <textarea class="form-control border rounded-pill @error('alamat') is-invalid @enderror " id="alamat"
                                             placeholder="Alamat" name="alamat" value="{{ old('alamat') }}"></textarea>
                                     </div>
-                                    
-
                                     <div class="mb-3 d-flex justify-content-center rounded-pill p-3 ">
                                         <button type="submit"
                                             class="btn btn-dark d-flex justify-content-center rounded-pill p-3  ">Masuk!</button>

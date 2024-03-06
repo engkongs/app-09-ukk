@@ -5,7 +5,7 @@
     </div>
     <div class="page-content">
         <section class="row">
-            \<div class="container">
+            <div class="container">
                 <div class="card">
                     <div class="card-body">
                         <div class="col">
