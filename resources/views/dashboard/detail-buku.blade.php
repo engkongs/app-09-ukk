@@ -28,48 +28,50 @@
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="mb-3">
-                                                        <label for="judul-buku" class="form-label">ID</label>
-                                                        <input type="text" class="form-control" readonly
+                                                        <label for="judul-buku" class="form-label fw-bold ">ID</label>
+                                                        <input type="text" class="form-control border-0 " readonly
                                                             value="{{ $buku->id }}" id="judul-buku" name="judul"
                                                             placeholder="Judul">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="judul-buku" class="form-label">Judul Buku</label>
-                                                        <input type="text" class="form-control" readonly
+                                                        <label for="judul-buku" class="form-label fw-bold">Judul
+                                                            Buku</label>
+                                                        <input type="text" class="form-control border-0" readonly
                                                             value="{{ Str::title($buku->judul) }}" id="judul-buku"
                                                             name="judul" placeholder="Judul Buku">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="Kategori" class="form-label">Kategori</label>
-                                                        <input type="text" class="form-control" readonly
+                                                        <label for="Kategori" class="form-label fw-bold">Kategori</label>
+                                                        <input type="text" class="form-control border-0" readonly
                                                             value="{{ Str::title($kategori->kategori) }}" id="kategori"
                                                             name="kategori" placeholder="Nama Kategori">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="Penulis" class="form-label">Penulis</label>
-                                                        <input type="text" class="form-control"
+                                                        <label for="Penulis" class="form-label fw-bold">Penulis</label>
+                                                        <input type="text" class="form-control border-0"
                                                             value=" {{ Str::title($buku->penulis) }}" readonly
                                                             id="penulis" name="penulis" placeholder="Penulis">
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="mb-3">
-                                                        <label for="Tahun terbit" class="form-label">Tahun Terbit</label>
+                                                        <label for="Tahun terbit" class="form-label fw-bold">Tahun
+                                                            Terbit</label>
                                                         <input type="number" min="1990" max="2099" step="1"
-                                                            value="2005" class="form-control" readonly
+                                                            value="2005" class="form-control border-0" readonly
                                                             value="{{ Str::title($buku->tahun_terbit) }}" id="tahun_terbit"
                                                             name="tahun_terbit" placeholder="Nama Kategori">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="Stok" class="form-label">Stok</label>
-                                                        <input type="number" class="form-control" readonly
+                                                        <label for="Stok" class="form-label fw-bold">Stok</label>
+                                                        <input type="number" class="form-control border-0" readonly
                                                             value="{{ Str::title($buku->stok) }}" value="20"
                                                             id="stok" name="stok" placeholder="Nama Kategori">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="Deskripsi" class="form-label">Deskripsi</label>
-                                                        <textarea type="text" class="form-control" readonly value="{{ Str::title($buku->deskripsi) }}" id="kategori"
-                                                            name="deskripsi" placeholder="Deskripsi">{{ $buku->deskripsi }}</textarea>
+                                                        <label for="Deskripsi" class="form-label fw-bold">Deskripsi</label>
+                                                        <textarea type="text" class="form-control border-0" readonly value="{{ Str::title($buku->deskripsi) }}"
+                                                            id="kategori" name="deskripsi" placeholder="Deskripsi">{{ $buku->deskripsi }}</textarea>
                                                     </div>
                                                 </div>
                                             </div>

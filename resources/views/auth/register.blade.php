@@ -7,9 +7,9 @@
             <div class="">
                 <div class="card" style="width: 30rem;">
                     <div class="">
-                        <h1 class="d-flex justify-content-center  fw-bold ">Belum Punya Akun ?</h1>
+                        <h1 class="d-flex justify-content-center  fw-bold mt-3">Belum Punya Akun ?</h1>
                         <div class="d-flex justify-content-center">
-                            <h3 class=" fw-semibold ">Langsung Saja Daftar</h3>
+                            <h4 class=" fw-semibold ">Daftar dibawah ini</h4>
                         </div>
                         <div class="card-body">
                             <form action="{{ route('register.store') }}" method="POST" enctype="multipart/form-data">
@@ -40,8 +40,7 @@
                                         @endif
                                     </div>
                                     <div class="mb-3">
-                                        <label for="password_confirmation"
-                                            class="col-md-4 col-form-label text-md-end text-start"></label>
+
                                         <div class="col">
                                             <input type="password" class="form-control border  rounded-pill p-3 "
                                                 id="password_confirmation" name="password_confirmation"
@@ -67,12 +66,12 @@
                                         @endif
                                     </div>
                                     <div class="mb-3">
-                                        <label for="image" class="form-label">Foto Profile</label>
-                                        <input type="file" class="form-control" name="gambar" id="image">
-                                    </div>
-                                    <div class="mb-3">
                                         <textarea class="form-control border rounded-pill @error('alamat') is-invalid @enderror " id="alamat"
                                             placeholder="Alamat" name="alamat" value="{{ old('alamat') }}"></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="image" class="form-label">Foto Profile</label>
+                                        <input type="file" class="form-control" name="gambar" id="image">
                                     </div>
                                     <div class="mb-3 d-flex justify-content-center rounded-pill p-3 ">
                                         <button type="submit"
@@ -80,7 +79,7 @@
                                     </div>
                                     <div class="justify-content-center mb-3 ">
                                         <a href="{{ url('login') }}"
-                                            class="btn btn-dark d-flex justify-content-center rounded-pill p-3">Back
+                                            class="btn btn-dark d-flex justify-content-center rounded-pill p-3">
                                             Back</a>
                                     </div>
                                 </div>

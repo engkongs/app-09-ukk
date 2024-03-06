@@ -9,6 +9,9 @@
                 <div class="">
                     <div class="col">
                         <h3 class="mt-3">Selamat Datang di Halaman Buku </h3>
+                        @foreach ($kategori as $item)
+                            <span class="badge text-bg-primary mb-3">{{ Str::title($item->kategori) }}</span>
+                        @endforeach
                         <div class="card">
                             <div class="card-body">
                                 @if (auth()->user()->role == 'admin' || auth()->user()->role == 'petugas')

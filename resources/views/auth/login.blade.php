@@ -7,7 +7,7 @@
             <div class="">
                 <div class="card " style="width: 30rem; margin-bottom: 500px;">
                     <div class="">
-                        <h1 class="d-flex justify-content-center fw-bold  ">Selamat Datang !</h1>
+                        <h1 class="d-flex justify-content-center fw-bold mt-4 ">Selamat Datang !</h1>
                         <div class="card-body">
                             <form action="{{ route('login.store') }}" method="post">
                                 @csrf
@@ -35,7 +35,7 @@
 
                                 <div class="justify-content-center mb-3 ">
                                     <a href="{{ url('/') }}"
-                                        class="btn btn-dark d-flex justify-content-center rounded-pill p-3">Back Back</a>
+                                        class="btn btn-dark d-flex justify-content-center rounded-pill p-3">Back</a>
                                 </div>
                                 <div class="text-center mt-5 text-lg mb-3">
                                     <a href="{{ url('register') }}"> Belum punya akun?

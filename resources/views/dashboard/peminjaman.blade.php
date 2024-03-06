@@ -63,9 +63,11 @@
                                                                         Options
                                                                     </button>
                                                                     <ul class="dropdown-menu">
-                                                                        <li><a class="dropdown-item"
-                                                                                href={{ route('peminjaman.edit', $peminjam->id) }}>Edit</a>
-                                                                        </li>
+                                                                        @if ($peminjam->status != 'dikembalikan')
+                                                                            <li><a class="dropdown-item"
+                                                                                    href={{ route('peminjaman.edit', $peminjam->id) }}>Edit</a>
+                                                                            </li>
+                                                                        @endif
                                                                         <form
                                                                             action="{{ route('peminjaman.destroy', $peminjam->id) }}"
                                                                             method="POST">
