@@ -39,7 +39,7 @@ class PeminjamanExport implements FromCollection, WithHeadings, WithMapping
             $peminjaman->buku->judul,
             $peminjaman->tanggal_pinjam,
             $peminjaman->tanggal_kembali,
-            $peminjaman->status_pinjam,
+            $peminjaman->status,
             $peminjaman->user->name,
         ];
     }
